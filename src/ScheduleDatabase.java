@@ -13,6 +13,7 @@ public class ScheduleDatabase {
     
     private String sqliteFilename;
     private String connectionURL;
+    //private Connection connection;
 
     /**
      * Construct new Database
@@ -21,9 +22,9 @@ public class ScheduleDatabase {
      */
     public ScheduleDatabase(String sqliteFilename) {
         this.sqliteFilename = sqliteFilename;
-        this.connectionURL = "jdbc:sqlite: " + sqliteFilename + ".db";
+        this.connectionURL = "jdbc:sqlite:" + sqliteFilename + ".db";
         try {
-            createDatabase(connectionURL);
+            createDatabase("Courses");
         }catch (SQLException e){
             System.out.println(e);
         }
@@ -34,15 +35,16 @@ public class ScheduleDatabase {
      * 
      * @return connection to database
      */
-    private void createDatabase(String tableName) throws SQLException {
+    public void createDatabase(String tableName) throws SQLException {
         
         System.out.println("URL = " + connectionURL);
 
-        try (Connection connection = DriverManager.getConnection(connectionURL)){
-            try (Statement myState = connection.createStatement()){
-                myState.execute("drop table if exists " + sqliteFilename);
-                myState.execute("create table if not exists " + tableName + " (courseName string, startTime string, endTime string, location string)");
-            }
+        try {
+            Connection connection = DriverManager.getConnection(connectionURL);
+            Statement myState = connection.createStatement();
+            myState.execute("drop table if exists " + sqliteFilename);
+            myState.execute("create table if not exists " + tableName + " (courseName string, startTime string, endTime string, location string)");
+            //myState.executeUpdate(connectionURL);
 
         } catch (SQLException e) {
             System.out.println(e);
@@ -66,13 +68,13 @@ public class ScheduleDatabase {
     }
 
     public static void main(String[] args) {
-        ScheduleDatabase db = new ScheduleDatabase("ScheduleDB");
-        try {
-            db.createDatabase("Courses");
-            db.createCourse("Courses", "CS321", "9:00am", "10:15am", "CCP231");
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        //ScheduleDatabase db = new ScheduleDatabase("ScheduleDB");
+        // try {
+        //     db.createDatabase("Courses");
+        // } catch (SQLException e) {
+        //     System.out.println(e);
+        // }
+        //db.createCourse("Courses", "CS321", "9:00am", "10:15am", "CCP231");
     }
 
 }

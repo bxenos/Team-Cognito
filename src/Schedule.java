@@ -26,7 +26,7 @@ public class Schedule {
      */
     public void addCourse(Course course) {
         this.schedule.add(course);
-        this.db.createCourse("ScheduleDB_" + username, course.getCourseName(), course.getCourseStartTime(), course.getCourseEndTime(), course.getCourseLocation());
+        this.db.createCourse("Courses", course.getCourseName(), course.getCourseStartTime(), course.getCourseEndTime(), course.getCourseLocation());
     } 
 
     /**

@@ -1,3 +1,4 @@
+import java.sql.SQLException;
 import java.util.Scanner;
 
 public class User {
@@ -12,7 +13,7 @@ public class User {
     public User(String username, String school, Schedule schedule) {
         this.username = username;
         this.school = school;
-        this.schedule = new Schedule(username);
+        this.schedule = schedule;
     }
 
     /**
@@ -58,5 +59,12 @@ public class User {
 
         Course course1 = new Course(courseName, startTime, endTime, location);
         mySchedule.addCourse(course1);
+        // ScheduleDatabase db = new ScheduleDatabase("ScheduleDB");
+        // try {
+        //     db.createDatabase("Courses");
+        // } catch (SQLException e) {
+        //     System.out.println(e);
+        // }
+        // db.createCourse("Courses", "CS321", "9:00am", "10:15am", "CCP231");
     }
  }
