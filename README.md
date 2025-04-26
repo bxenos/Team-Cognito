@@ -14,3 +14,10 @@ Once you have finished doing `npm start` click on this link to see the website h
 
 https://html-to-pug.com/
 
+Before we can start developing applications we need to make sure we have a fully functional developer environment. We will be using VSCode as our editor, Google Chrome as our browser, and NodeJS as our backend environment. Getting all the tools setup and configured can take some time so make sure and start this as early as possible so if you hit any snags you can get help before the due date passes 😃.
+
+Install VSCode and Git
+Install NodeJS (https://nodejs.org/en/download)
+Reboot your computer! Don't skip this step!
+Read about terminal basics
+
