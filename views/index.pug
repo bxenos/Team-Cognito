@@ -1,8 +1,11 @@
 doctype html
-link(rel='stylesheet' href='css/style.css')
-
-head
+html
+  head
     title CourseTracker
-body
-    h1 Enter your courses
-    h2 Add a button
+    link(rel='stylesheet', href='css/style.css')
+  body
+    div(class='centered')
+      h1(for='task') Enter name:
+      form(action='/add_task', method='POST')
+        input(type='text', name='task')
+        input(type='submit', value='Add')
