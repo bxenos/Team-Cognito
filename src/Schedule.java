@@ -9,20 +9,16 @@ import java.util.ArrayList;;
 public class Schedule {
 
     private ArrayList<Course> schedule;
+    private String username;
+    private ScheduleDatabase db;
 
     /**
      * Constructs an empty Schedule with no Courses
      */
-    public Schedule() {
+    public Schedule(String username) {
+        this.username = username;
         this.schedule = new ArrayList<Course>();
-    }
-
-    /**
-     * Constructs a Schedule with an input Course
-     */
-    public Schedule(Course course) {
-        this.schedule = new ArrayList<Course>();
-        this.schedule.add(course);
+        this.db = new ScheduleDatabase("ScheduleDB_" + username);
     }
 
     /**
@@ -30,6 +26,7 @@ public class Schedule {
      */
     public void addCourse(Course course) {
         this.schedule.add(course);
+        this.db.createCourse("ScheduleDB_" + username, course.getCourseName(), course.getCourseStartTime(), course.getCourseEndTime(), course.getCourseLocation());
     } 
 
     /**

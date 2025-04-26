@@ -1,14 +1,18 @@
+import java.util.Scanner;
+
 public class User {
     //instance variables
-    private String name;
+    private String username;
     private String school;
+    private Schedule schedule;
     
     /**
      * constructor to make user
      */
-    public User(String name, String school) {
-        this.name = name;
+    public User(String username, String school, Schedule schedule) {
+        this.username = username;
         this.school = school;
+        this.schedule = new Schedule(username);
     }
 
     /**
@@ -17,7 +21,7 @@ public class User {
      * @returns User's name
      */
     public String getName() {
-        return name;
+        return username;
     }
 
     /**
@@ -34,5 +38,25 @@ public class User {
      */
     public void addNewCourse() {
         //DO SOMETHING
+    }
+
+    public static void main(String[] args) {
+        Scanner scnr = new Scanner(System.in);
+        System.out.print("\nEnter your name: ");
+        String username = scnr.nextLine();
+        System.out.print("\nEnter course name: ");
+        String courseName = scnr.nextLine();
+        System.out.print("\nEnter start time: ");
+        String startTime = scnr.nextLine();
+        System.out.print("\nEnter end time: ");
+        String endTime = scnr.nextLine();
+        System.out.print("\nEnter location: ");
+        String location = scnr.nextLine();
+
+        Schedule mySchedule = new Schedule(username);
+        User myUser = new User(username, "BSU", mySchedule);
+
+        Course course1 = new Course(courseName, startTime, endTime, location);
+        mySchedule.addCourse(course1);
     }
  }

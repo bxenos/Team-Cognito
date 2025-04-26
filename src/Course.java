@@ -7,15 +7,15 @@ import java.time.LocalTime;
  */
 public class Course {
 
-    private LocalTime courseStartTime;
-    private LocalTime courseEndTime;
+    private String courseStartTime;
+    private String courseEndTime;
     private String courseName;
     private String courseLocation;
 
     /**
      * Constructs a new Course object
      */
-    public Course(LocalTime courseStartTime, LocalTime courseEndTime, String courseName, String courseLocation) {
+    public Course(String courseStartTime, String courseEndTime, String courseName, String courseLocation) {
 
         this.courseStartTime = courseStartTime;
         this.courseEndTime = courseEndTime;
@@ -28,7 +28,7 @@ public class Course {
      * 
      * @return courseStartTime
      */
-    public LocalTime getCourseStartTime() {
+    public String getCourseStartTime() {
         return this.courseStartTime;
     }
 
@@ -37,7 +37,7 @@ public class Course {
      * 
      * @return courseEndTime
      */
-    public LocalTime getCourseEndTime() {
+    public String getCourseEndTime() {
         return this.courseEndTime;
     }
 
@@ -64,7 +64,7 @@ public class Course {
      * 
      * @param courseStartTime
      */
-    public void setCourseStartTime(LocalTime courseStartTime) {
+    public void setCourseStartTime(String courseStartTime) {
         this.courseStartTime = courseStartTime;
     }
 
@@ -73,7 +73,7 @@ public class Course {
      * 
      * @param courseEndTime
      */
-    public void setCourseEndTime(LocalTime courseEndTime) {
+    public void setCourseEndTime(String courseEndTime) {
         this.courseEndTime = courseEndTime;
     }
 
