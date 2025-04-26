@@ -1,19 +1,34 @@
+import com.google.gson.Gson;
 import static spark.Spark.*;
 
 public class JavaServer {
     public static void main(String[] args) {
+        port(5000);
+
         post("/addCourse", (req, res) -> {
-            String courseName = req.queryParams("courseName");
-            String startTime = req.queryParams("startTime");
-            String endTime = req.queryParams("endTime");
-            String location = req.queryParams("location");
+            // Parse JSON data
+            Gson gson = new Gson();
+            CourseData courseData = gson.fromJson(req.body(), CourseData.class);
 
-            // Use the data to create a Course object
-            Course course = new Course(startTime, endTime, courseName, location);
-            Schedule schedule = new Schedule("username"); // Replace with actual username
-            schedule.addCourse(course);
+            // Log the received data
+            System.out.println("Received course details:");
+            System.out.println("Course Name: " + courseData.courseName);
+            System.out.println("Start Time: " + courseData.startTime);
+            System.out.println("End Time: " + courseData.endTime);
+            System.out.println("Location: " + courseData.location);
 
+            // Process the data and save to database 
+
+            // Send a response back to the Node.js server
             return "Course added successfully!";
         });
+    }
+
+    // Define a class to map the JSON data
+    static class CourseData {
+        String courseName;
+        String startTime;
+        String endTime;
+        String location;
     }
 }
