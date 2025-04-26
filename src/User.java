@@ -1,7 +1,7 @@
 public class User {
     //instance variables
-    String name;
-    String school;
+    private String name;
+    private String school;
     
     /**
      * constructor to make user
@@ -9,8 +9,6 @@ public class User {
     public User(String name, String school) {
         this.name = name;
         this.school = school;
-
-
     }
 
     /**
@@ -34,7 +32,7 @@ public class User {
     /**
      * Adds a new class to the users schedule
      */
-    public void addNewClass() {
+    public void addNewCourse() {
         //DO SOMETHING
     }
  }
