@@ -7,4 +7,18 @@ html
     form(action='/', method='get')
         button.back(href='/') Back
     div(class='centered')
-      h1 Hi #{name}!
+      h1 Hi #{name}! Add your new class below:
+      form(action='/update_task', method='POST')
+        label(for='courseName') Course Name:
+        input(type='text', name='courseName', placeholder='Enter course name')
+        br
+        label(for='startTime') Start Time:
+        input(type='text', name='startTime', placeholder='Enter start time')
+        br
+        label(for='endTime') End Time:
+        input(type='text', name='endTime', placeholder='Enter end time')
+        br
+        label(for='location') Location:
+        input(type='text', name='location', placeholder='Enter location')
+        br
+        input(type='submit', value='Update')

@@ -20,12 +20,28 @@ app.get('/', function (req, res) {
 })
 
 // POST request to create the user page
-app.post('/add_task', function (req, res) {
+app.post('/add_task', async function (req, res) {
     const userText = req.body.task
     console.log('User entered:', userText)
-    
-    res.render('user', { name: userText })  // <-- pass data to user.pug
-})
+
+    try {
+        const response = await fetch('http://localhost:3000/addCourse', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: new URLSearchParams(courseData)
+        });
+
+        const result = await response.text();
+        console.log('Java server response:', result);
+
+        res.render('user', { name: userText })  // <-- pass data to user.pug
+
+    } catch (error) {
+        console.error('Error occurred while fetching:', error);
+        res.status(500).send('An error occurred');
+    }
+
+});
 
 // Start server
 app.listen(3000, function () {
