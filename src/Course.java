@@ -15,11 +15,11 @@ public class Course {
     /**
      * Constructs a new Course object
      */
-    public Course(String courseStartTime, String courseEndTime, String courseName, String courseLocation) {
+    public Course(String courseName, String courseStartTime, String courseEndTime, String courseLocation) {
 
+        this.courseName = courseName;
         this.courseStartTime = courseStartTime;
         this.courseEndTime = courseEndTime;
-        this.courseName = courseName;
         this.courseLocation = courseLocation;
     }
 

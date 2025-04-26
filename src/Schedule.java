@@ -34,5 +34,6 @@ public class Schedule {
      */
     public void removeCourse(Course course) {
         this.schedule.remove(course);
+        this.db.deleteCourse("Courses", course.getCourseName());
     } 
 }

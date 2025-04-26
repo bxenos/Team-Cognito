@@ -13,7 +13,6 @@ public class ScheduleDatabase {
     
     private String sqliteFilename;
     private String connectionURL;
-    //private Connection connection;
 
     /**
      * Construct new Database
@@ -67,14 +66,19 @@ public class ScheduleDatabase {
         }
     }
 
-    public static void main(String[] args) {
-        //ScheduleDatabase db = new ScheduleDatabase("ScheduleDB");
-        // try {
-        //     db.createDatabase("Courses");
-        // } catch (SQLException e) {
-        //     System.out.println(e);
-        // }
-        //db.createCourse("Courses", "CS321", "9:00am", "10:15am", "CCP231");
+    public void deleteCourse(String tableName, String courseName) {
+
+        try{
+            Connection connection = DriverManager.getConnection(connectionURL);
+            PreparedStatement preparedStatement = connection.prepareStatement("delete from " + tableName + " where courseName = ?");
+
+            preparedStatement.setString(1, courseName);
+            int rows = preparedStatement.executeUpdate();
+            //TODO no course found
+
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
     }
 
 }
